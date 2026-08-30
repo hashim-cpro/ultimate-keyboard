@@ -1,0 +1,206 @@
+(footprint "Stabilizer_Cherry_MX_6.25u"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Cherry MX PCB Stabilizer 6.25u")
+	(tags "Cherry MX Keyboard Stabilizer 6.25u Cutout")
+	(property "Reference" "REF**"
+		(at 0 -2 0)
+		(layer "F.SilkS")
+		(uuid "1bba0c5b-59aa-4a45-946f-5303f6aa38da")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Stabilizer_Cherry_MX_6.25u"
+		(at 0 2 0)
+		(layer "F.Fab")
+		(uuid "8d65e1f4-e6af-40f6-9bdf-7424792334e8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0b9aabf8-d67c-48b0-8ba3-4e1a6cf029a5")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "adf66e60-1d12-47cc-af09-655bfe5955ba")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr exclude_from_pos_files exclude_from_bom)
+	(fp_line
+		(start -2 0)
+		(end 2 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "80f20149-d11e-4355-97b6-f3d6e59c4f5e")
+	)
+	(fp_line
+		(start 0 2)
+		(end 0 -2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "0d62cce2-f409-4b12-ab95-9b9332182f2d")
+	)
+	(fp_line
+		(start -53.375 -5.53)
+		(end -53.375 6.77)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Eco1.User")
+		(uuid "f624ee63-aaa3-4aca-a01b-2bf8aaa5f653")
+	)
+	(fp_line
+		(start -53.375 6.77)
+		(end -46.625 6.77)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Eco1.User")
+		(uuid "ca132edb-0d62-4791-9ac5-724cd7b79592")
+	)
+	(fp_line
+		(start -46.625 -5.53)
+		(end -53.375 -5.53)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Eco1.User")
+		(uuid "f56a4641-611d-4f73-989b-f892c82a5408")
+	)
+	(fp_line
+		(start -46.625 6.77)
+		(end -46.625 -5.53)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Eco1.User")
+		(uuid "1dc7187b-e4c4-4a2a-9ebf-bd82050d41f3")
+	)
+	(fp_line
+		(start 46.625 -5.53)
+		(end 46.625 6.77)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Eco1.User")
+		(uuid "7c7dc483-83dc-4145-a941-1b576405fc72")
+	)
+	(fp_line
+		(start 46.625 6.77)
+		(end 53.375 6.77)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Eco1.User")
+		(uuid "885dd61b-7ed1-45be-9d91-86e4a02038b7")
+	)
+	(fp_line
+		(start 53.375 -5.53)
+		(end 46.625 -5.53)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Eco1.User")
+		(uuid "66fc5825-051c-417b-9098-221fa8e9d91f")
+	)
+	(fp_line
+		(start 53.375 6.77)
+		(end 53.375 -5.53)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Eco1.User")
+		(uuid "b9381c66-5b6e-45c4-a30d-34cde8661125")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "2c26ed4b-1ec7-43bc-82b4-9a241d3a1e36")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "" np_thru_hole circle
+		(at -50 -6.985)
+		(size 3.048 3.048)
+		(drill 3.048)
+		(layers "*.Cu" "*.Mask")
+		(uuid "1b9858f6-4a99-4382-ae10-ef93e4748751")
+	)
+	(pad "" np_thru_hole circle
+		(at -50 8.225)
+		(size 3.9878 3.9878)
+		(drill 3.9878)
+		(layers "*.Cu" "*.Mask")
+		(uuid "604a2f5e-b856-4b5f-bc74-d8dd2557dc2a")
+	)
+	(pad "" np_thru_hole circle
+		(at 50 -6.985)
+		(size 3.048 3.048)
+		(drill 3.048)
+		(layers "*.Cu" "*.Mask")
+		(uuid "29542222-3ee0-4955-b3b3-e4ed70d161dd")
+	)
+	(pad "" np_thru_hole circle
+		(at 50 8.225)
+		(size 3.9878 3.9878)
+		(drill 3.9878)
+		(layers "*.Cu" "*.Mask")
+		(uuid "47e93c51-e2ff-475e-bea2-8117210474ef")
+	)
+	(embedded_fonts no)
+	(model "D:/Projects/Personal/ultimate-keyboard/Libraries/kiswitch-main/kiswitch-main/library/3dmodels/3d-library.3dshapes/Stabilizer_Cherry_MX_6.25u.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
