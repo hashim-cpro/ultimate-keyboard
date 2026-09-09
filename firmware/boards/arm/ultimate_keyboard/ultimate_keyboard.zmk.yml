@@ -1,0 +1,13 @@
+file_format: "1"
+id: ultimate_keyboard
+name: Ultimate Keyboard
+type: board
+arch: arm
+features:
+  - keys
+  - display
+  - studio
+  - underglow
+  - bootloader
+url: https://github.com/hashim-cpro/ultimate-keyboard
+siblings: []

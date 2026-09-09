@@ -1,0 +1,66 @@
+name: Build ZMK Firmware
+
+on:
+  push:
+    paths:
+      - 'firmware/**'
+      - '.github/workflows/build.yml'
+  pull_request:
+    paths:
+      - 'firmware/**'
+      - '.github/workflows/build.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: zmkfirmware/zmk-build-arm:stable
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache west modules
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-zephyr-modules
+        with:
+          path: |
+            modules/
+            tools/
+            zephyr/
+            bootloader/
+            zmk/
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('firmware/config/west.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+
+      - name: Initialize workspace (west init)
+        run: |
+          if [ ! -d .west ]; then
+            west init -l firmware/config
+            west update
+            west zephyr-export
+          fi
+
+      - name: Build firmware
+        run: |
+          west build -s zmk/app -d build -b ultimate_keyboard -- \
+            -DZMK_CONFIG="${GITHUB_WORKSPACE}/firmware/config" \
+            -DZMK_EXTRA_MODULES="${GITHUB_WORKSPACE}/firmware"
+
+      - name: Rename artifacts
+        run: |
+          mkdir -p firmware/build_artifacts
+          if [ -f build/zephyr/zmk.uf2 ]; then
+            cp build/zephyr/zmk.uf2 firmware/build_artifacts/ultimate_keyboard.uf2
+          fi
+          if [ -f build/zephyr/zmk.hex ]; then
+            cp build/zephyr/zmk.hex firmware/build_artifacts/ultimate_keyboard.hex
+          fi
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ultimate_keyboard_firmware
+          path: firmware/build_artifacts/*
