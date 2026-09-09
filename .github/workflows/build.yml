@@ -17,37 +17,40 @@ jobs:
           cache-name: cache-zephyr-modules
         with:
           path: |
-            modules/
-            tools/
-            zephyr/
-            bootloader/
-            zmk/
+            /workspace/modules/
+            /workspace/tools/
+            /workspace/zephyr/
+            /workspace/bootloader/
+            /workspace/zmk/
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('firmware/config/west.yml') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
 
       - name: Initialize workspace (west init)
         run: |
+          git config --global --add safe.directory "*"
+          mkdir -p /workspace
+          cd /workspace
           if [ ! -d .west ]; then
-            west init -l firmware/config
+            west init -m https://github.com/zmkfirmware/zmk --mr main
             west update
             west zephyr-export
           fi
 
       - name: Build firmware
         run: |
+          git config --global --add safe.directory "*"
+          cd /workspace
           west build -s zmk/app -d build -b ultimate_keyboard -- \
             -DZMK_CONFIG="${GITHUB_WORKSPACE}/firmware/config" \
-            -DZMK_EXTRA_MODULES="${GITHUB_WORKSPACE}/firmware"
+            -DBOARD_ROOT="${GITHUB_WORKSPACE}/firmware"
 
-      - name: Rename artifacts
+      - name: Save artifacts
         run: |
-          mkdir -p firmware/build_artifacts
-          if [ -f build/zephyr/zmk.uf2 ]; then
-            cp build/zephyr/zmk.uf2 firmware/build_artifacts/ultimate_keyboard.uf2
-          fi
-          if [ -f build/zephyr/zmk.hex ]; then
-            cp build/zephyr/zmk.hex firmware/build_artifacts/ultimate_keyboard.hex
+          mkdir -p "${GITHUB_WORKSPACE}/firmware/build_artifacts"
+          cp /workspace/build/zephyr/zmk.uf2 "${GITHUB_WORKSPACE}/firmware/build_artifacts/ultimate_keyboard.uf2"
+          if [ -f /workspace/build/zephyr/zmk.hex ]; then
+            cp /workspace/build/zephyr/zmk.hex "${GITHUB_WORKSPACE}/firmware/build_artifacts/ultimate_keyboard.hex"
           fi
 
       - name: Upload Artifacts

@@ -49,7 +49,6 @@
 
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN";
         diode-direction = "col2row";
 
         col-gpios
@@ -80,7 +79,6 @@
 
     vbatt: vbatt {
         compatible = "zmk,battery-voltage-divider";
-        label = "BATTERY";
         io-channels = <&adc 2>; /* P0.04/AIN2 (Pad 18) */
         output-ohms = <2000000>;
         full-ohms = <(2000000 + 820000)>;
@@ -88,7 +86,6 @@
 
     ext-power {
         compatible = "zmk,ext-power-generic";
-        label = "EXT_POWER";
         control-gpios = <&gpio1 9 GPIO_ACTIVE_HIGH>; /* P1.09 (Pad 17) controls Q2 gate */
         init-delay-ms = <50>;
     };
@@ -150,7 +147,6 @@
 
     led_strip: ws2812@0 {
         compatible = "worldsemi,ws2812-spi";
-        label = "SK6812MINI-E";
         reg = <0>;
         spi-max-frequency = <4000000>;
         chain-length = <84>;
