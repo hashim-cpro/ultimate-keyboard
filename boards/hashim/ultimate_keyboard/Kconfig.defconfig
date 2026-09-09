@@ -4,7 +4,7 @@
 if BOARD_ULTIMATE_KEYBOARD
 
 config ZMK_KEYBOARD_NAME
-    default "Ultimate Keyboard"
+    default "UltimateKeyboard"
 
 choice ZMK_BOOTMODE_MAGIC_VALUE_BOOTLOADER_TYPE
     default ZMK_BOOTMODE_MAGIC_VALUE_BOOTLOADER_TYPE_ADAFRUIT_NRF52
