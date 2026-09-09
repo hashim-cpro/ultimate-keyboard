@@ -4,57 +4,7 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    container:
-      image: zmkfirmware/zmk-build-arm:stable
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Cache west modules
-        uses: actions/cache@v4
-        env:
-          cache-name: cache-zephyr-modules
-        with:
-          path: |
-            /workspace/modules/
-            /workspace/tools/
-            /workspace/zephyr/
-            /workspace/bootloader/
-            /workspace/zmk/
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('firmware/config/west.yml') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-
-      - name: Initialize workspace (west init)
-        run: |
-          git config --global --add safe.directory "*"
-          mkdir -p /workspace
-          cd /workspace
-          if [ ! -d .west ]; then
-            west init -m https://github.com/zmkfirmware/zmk --mr main
-            west update
-            west zephyr-export
-          fi
-
-      - name: Build firmware
-        run: |
-          git config --global --add safe.directory "*"
-          cd /workspace
-          west build -s zmk/app -d build -b ultimate_keyboard -- \
-            -DZMK_CONFIG="${GITHUB_WORKSPACE}/firmware/config" \
-            -DBOARD_ROOT="${GITHUB_WORKSPACE}/firmware"
-
-      - name: Save artifacts
-        run: |
-          mkdir -p "${GITHUB_WORKSPACE}/firmware/build_artifacts"
-          cp /workspace/build/zephyr/zmk.uf2 "${GITHUB_WORKSPACE}/firmware/build_artifacts/ultimate_keyboard.uf2"
-          if [ -f /workspace/build/zephyr/zmk.hex ]; then
-            cp /workspace/build/zephyr/zmk.hex "${GITHUB_WORKSPACE}/firmware/build_artifacts/ultimate_keyboard.hex"
-          fi
-
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ultimate_keyboard_firmware
-          path: firmware/build_artifacts/*
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      build_matrix_path: firmware/build.yaml
+      config_path: firmware/config
