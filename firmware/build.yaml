@@ -1,2 +1,3 @@
 include:
-  - board: ultimate_keyboard
+  - board: ultimate_keyboard//zmk
+    artifact-name: ultimate_keyboard

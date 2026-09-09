@@ -1,7 +1,0 @@
-board:
-  name: ultimate_keyboard
-  vendor: hashim
-socs:
-  - name: nrf52840
-variants:
-  - name: zmk

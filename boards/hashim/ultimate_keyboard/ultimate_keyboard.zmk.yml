@@ -5,7 +5,6 @@ type: board
 arch: arm
 features:
   - keys
-  - display
   - studio
   - underglow
   - bootloader

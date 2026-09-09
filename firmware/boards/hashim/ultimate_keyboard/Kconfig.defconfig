@@ -1,13 +1,12 @@
-# Ultimate Keyboard board default configuration
+# Copyright (c) 2026 Hashim
 # SPDX-License-Identifier: MIT
 
 if BOARD_ULTIMATE_KEYBOARD
 
-config BOARD
-    default "ultimate_keyboard"
+config ZMK_KEYBOARD_NAME
+    default "Ultimate Keyboard"
 
 # NFC pins P0.09 and P0.10 are matrix rows 3 and 2!
-# They must be configured as standard GPIOs:
 config NFCT_PINS_AS_GPIOS
     default y
 
@@ -15,14 +14,23 @@ config NFCT_PINS_AS_GPIOS
 config GPIO_AS_PINRESET
     default y
 
-# Enable internal DCDC converters for power efficiency
+# Enable internal DCDC converters
 config BOARD_ENABLE_DCDC
     default y
 
 config BOARD_ENABLE_DCDC_HV
     default y
 
-# Bootloader retention mapping for Adafruit nRF52 Bootloader
+if USB_DEVICE_STACK
+
+config USB_NRFX
+    default y
+
+endif # USB_DEVICE_STACK
+
+config BT_CTLR
+    default BT
+
 choice ZMK_BOOTMODE_MAGIC_VALUE_BOOTLOADER_TYPE
     default ZMK_BOOTMODE_MAGIC_VALUE_BOOTLOADER_TYPE_ADAFRUIT_NRF52
 endchoice
