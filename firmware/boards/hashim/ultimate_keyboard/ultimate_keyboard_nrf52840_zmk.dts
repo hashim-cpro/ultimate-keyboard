@@ -163,3 +163,7 @@
         };
     };
 };
+
+&uicr {
+    nfct-pins-as-gpios;
+};

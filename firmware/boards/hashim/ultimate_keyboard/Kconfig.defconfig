@@ -6,31 +6,6 @@ if BOARD_ULTIMATE_KEYBOARD
 config ZMK_KEYBOARD_NAME
     default "Ultimate Keyboard"
 
-# NFC pins P0.09 and P0.10 are matrix rows 3 and 2!
-config NFCT_PINS_AS_GPIOS
-    default y
-
-# Hardware reset on P0.18 (SW85 button)
-config GPIO_AS_PINRESET
-    default y
-
-# Enable internal DCDC converters
-config BOARD_ENABLE_DCDC
-    default y
-
-config BOARD_ENABLE_DCDC_HV
-    default y
-
-if USB_DEVICE_STACK
-
-config USB_NRFX
-    default y
-
-endif # USB_DEVICE_STACK
-
-config BT_CTLR
-    default BT
-
 choice ZMK_BOOTMODE_MAGIC_VALUE_BOOTLOADER_TYPE
     default ZMK_BOOTMODE_MAGIC_VALUE_BOOTLOADER_TYPE_ADAFRUIT_NRF52
 endchoice
