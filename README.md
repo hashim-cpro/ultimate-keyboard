@@ -128,18 +128,6 @@ see in [pdf](/exports/diagrams/keyboard_wiring_diagram.pdf)
 
 ![Completed Schematic](media/schematics.png)
 
-### Hardware Wiring & Connections Diagram
-
-A clean, Arduino-style pictorial wiring diagram on a plain white background with real component 3D renders (PCB, LiPo battery, USB-C, ST-Link SWD programmer, Kailh MX socket) and color-coded curved wiring is available in:
-
-- **High-Res 300 DPI Image (10,417 × 5,834 px)**: [`exports/diagrams/keyboard_wiring_diagram.jpg`](exports/diagrams/keyboard_wiring_diagram.jpg)
-- **Vector PDF**: [`exports/diagrams/keyboard_wiring_diagram.pdf`](exports/diagrams/keyboard_wiring_diagram.pdf)
-
-![Bootloader Circuit](media/bootloader%20button.png)
-_This is the physical tactile button (SW85) to press to enter bootloader mode._
-
----
-
 ## Firmware (ZMK)
 
 The keyboard runs native [ZMK Firmware](https://zmk.dev/) built on the Zephyr RTOS with full support for Bluetooth Low Energy 5.0, USB HID, low-power deep sleep, battery level telemetry, and individually addressable RGB backlighting.
