@@ -119,9 +119,21 @@ ultimate-keyboard/
 
 ---
 
-## Schematics & Circuit Highlights
+## Wiring Diagram
+
+![Completed wiring diagram](/exports/diagrams/keyboard_wiring_diagram.jpg)
+see in [pdf](/exports/diagrams/keyboard_wiring_diagram.pdf)
+
+## Schematics & Wiring Diagrams
 
 ![Completed Schematic](media/schematics.png)
+
+### Hardware Wiring & Connections Diagram
+
+A clean, Arduino-style pictorial wiring diagram on a plain white background with real component 3D renders (PCB, LiPo battery, USB-C, ST-Link SWD programmer, Kailh MX socket) and color-coded curved wiring is available in:
+
+- **High-Res 300 DPI Image (10,417 × 5,834 px)**: [`exports/diagrams/keyboard_wiring_diagram.jpg`](exports/diagrams/keyboard_wiring_diagram.jpg)
+- **Vector PDF**: [`exports/diagrams/keyboard_wiring_diagram.pdf`](exports/diagrams/keyboard_wiring_diagram.pdf)
 
 ![Bootloader Circuit](media/bootloader%20button.png)
 _This is the physical tactile button (SW85) to press to enter bootloader mode._
@@ -145,6 +157,17 @@ This repository includes a GitHub Actions workflow in [`.github/workflows/build.
 3. Once the workflow run completes, click into the run, scroll to **Artifacts**, and download `ultimate_keyboard.zip`.
 4. Extract the `.uf2` file and flash it!
    > (enter bootloader mode by holding the dedicated button beneath space bar)
+
+---
+
+## Assembly
+
+After getting the PCB and the components, you can assemble the keyboard by following these steps:
+
+- first of all solder the MCU and the ICs surrounding it on the top side of the PCB with a heat gun.
+- then solder the usbc port and the boot button and the battery connections header(you can solder the wires directly to the pads if you want).
+- then solder the diodes, rgb leds and switch sockets along with everything remaining on the bottom side of the PCB.
+- connect the battery, flash the firmware, put the switches in and then you can test the keyboard and make sure everything is working properly.
 
 ---
 
