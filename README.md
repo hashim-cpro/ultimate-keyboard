@@ -124,7 +124,7 @@ ultimate-keyboard/
 ![Completed wiring diagram](/exports/diagrams/keyboard_wiring_diagram.jpg)
 see in [pdf](/exports/diagrams/keyboard_wiring_diagram.pdf)
 
-## Schematics & Wiring Diagrams
+## Schematics
 
 ![Completed Schematic](media/schematics.png)
 
